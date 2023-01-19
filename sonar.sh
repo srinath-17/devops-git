@@ -5,4 +5,5 @@ case $1 in
 	stop)
 		echo "server is stopping"
 		sh -x createlog.sh
+		echo "server is stopped"
 esac
