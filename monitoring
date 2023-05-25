@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Monitor Websites') {
+            steps {
+                script {
+                    def sites = [
+                        'https://github.com/srinath-17/srisgame.git',
+                        'https://github.com/srinath-17/devops-git.git'
+                    ]
+
+                    for (site in sites) {
+                        // Create a folder for each site in the sandbox space
+                        dir("sandbox/${site}") {
+                            // Invoke the monitorSitePipeline function for each site
+                            monitorSitePipeline(site)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
